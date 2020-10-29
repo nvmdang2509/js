@@ -11,17 +11,19 @@ document.querySelector('.btnTinhTien').onclick = function(){
     // console.log('So tien xe la : ',tinhTienxe);
     // console.log('So tien thoi gian cho la :',ThoiGianCho);
     // console.log('Tong tien phai tra la :',tongTien);
-
-    document.querySelector('#xuatTien').innerHTML = tongTien;
+    document.querySelector('#divThanhTien').style.display = 'block';
+    document.querySelector('#xuatTien').innerHTML = "<p><h4>Tổng tiền của bạn là :"+tongTien+"</h4></p>";
 }
 
 document.querySelector('.btnHoaDon').onclick = function(){
     var getsoKM = document.querySelector('#soKM').value;
     var getThoiGianCho = document.querySelector('#thoiGianCho').value;
     var getchecked = document.querySelector('input[name="selector"]:checked').value;
-    // var tinhTienxe = tinhTienuberX(getsoKM,getchecked);
-    // var ThoiGianCho = tinhThoiGianCho(getThoiGianCho,getchecked);
-    document.querySelector('#xuatTien').innerHTML = "<p>So KM da nhap la :"+getsoKM+"</p>";
+    var tinhTienxe = tinhTienuberX(getsoKM,getchecked);
+    var ThoiGianCho = tinhThoiGianCho(getThoiGianCho,getchecked);
+    var tongTien = tongTienXe(tinhTienxe,ThoiGianCho);
+    document.querySelector('#divThanhTien').style.display = 'block';
+    document.querySelector('#xuatTien').innerHTML = "<p><h4>Loại xe bạn chọn:"+getchecked+"</h4></p>"+"<p><h4>Số KM bạn đi là :"+getsoKM+"</h4></p>"+"<p><h4>Số thời gian chờ:"+getThoiGianCho+"</h4></p>"+"<p><h4>Tổng tiền KM là :"+tinhTienxe+"</h4></p>"+"<p><h4>Tổng tiền chờ là :"+ThoiGianCho+"</h4></p>"+"<p><h4>Tổng tiền của bạn là:"+tongTien+"</h4></p>";
 }
 
 var tinhTienuberX = function(getsoKM,getchecked){
